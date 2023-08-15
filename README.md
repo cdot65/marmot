@@ -10,19 +10,12 @@ This repository is mostly geared towards hands-on workshops where we teach the t
 
 - [🚀 Marmot](#marmot)
   - [📚 Table of Contents](#table-of-contents)
-  - [🌐 Project Overview](#project-overview)
   - [🛠️ Setting Up Your Environment](#️setting-up-your-environment)
     - [Using VScode Dev Containers](#using-vscode-dev-containers)
     - [Creating Python Virtual Environments](#creating-python-virtual-environments)
   - [📖 Where to Find Documentation](#where-to-find-documentation)
   - [🤝 Contributing](#contributing)
   - [✍️ Author](#️author)
-
-## Project Overview
-
-This repository contains a collection of Ansible playbooks and Docker containers designed to automate and manage Palo Alto Networks devices. The project is structured with standalone Ansible playbooks residing in the "ansible" directory, each in their own subdirectory. The project root contains a `tasks.py` file which works with Invoke to manage Docker containers and run playbooks.
-
-The container image can be built or pulled from the GitHub Container Registry. The container image is based on the official Python Docker image for both x86 and ARM CPU architectures, and includes the Palo Alto Networks Ansible collection and the required Python libraries to execute the playbooks.
 
 ## Setting Up Your Environment
 
