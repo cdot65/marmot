@@ -8,15 +8,15 @@ This repository is mostly geared towards hands-on workshops where we teach the t
 
 ## Table of Contents
 
-- [🚀 Marmot](#-marmot)
-  - [📚 Table of Contents](#-table-of-contents)
-  - [🌐 Project Overview](#-project-overview)
-  - [🛠️ Setting Up Your Environment](#️-setting-up-your-environment)
-    - [Using VScode Dev Containers](#-using-vscode-dev-containers)
-    - [Creating Python Virtual Environments](#-creating-python-virtual-environments)
-  - [📖 Where to Find Documentation](#-where-to-find-documentation)
-  - [🤝 Contributing](#-contributing)
-  - [✍️ Author](#️-author)
+- [🚀 Marmot](#marmot)
+  - [📚 Table of Contents](#table-of-contents)
+  - [🌐 Project Overview](#project-overview)
+  - [🛠️ Setting Up Your Environment](#️setting-up-your-environment)
+    - [Using VScode Dev Containers](#using-vscode-dev-containers)
+    - [Creating Python Virtual Environments](#creating-python-virtual-environments)
+  - [📖 Where to Find Documentation](#where-to-find-documentation)
+  - [🤝 Contributing](#contributing)
+  - [✍️ Author](#️author)
 
 ## Project Overview
 
@@ -44,7 +44,11 @@ There are two ways to set up your environment to execute the Ansible playbooks i
 
 ## Where to Find Documentation
 
-Project-specific documentation can be found in the README.md files within each standalone Ansible project directory. For general Ansible documentation, visit the official Ansible website: https://docs.ansible.com/
+Project-specific documentation can be found in the README.md files within each standalone project directory.
+
+- `pan-os-python`, refer to [the official documentation](https://pan-os-python.readthedocs.io/)
+- `Palo Alto Ansible Collection`, refer to [the official documentation](https://paloaltonetworks.github.io/pan-os-ansible/)
+- `panos` Terraform provider, refer to [the official documentation](https://registry.terraform.io/providers/PaloAltoNetworks/panos/latest/docs)
 
 ## Contributing
 
