@@ -1,0 +1,5 @@
+# Example variable values for the Terraform project
+
+hostname     = "192.168.1.1"
+pan_username = "admin"
+pan_password = "password123"
