@@ -56,9 +56,14 @@ device_group.add(pre_rulebase)
 pre_rules = SecurityRule.refreshall(pre_rulebase)
 logging.info("Successfully pulled existing PreRules from DataCenter device group")
 
-# debug will print out each of the rules to the console
+# # debug will print out each of the rules to the console
+# for each in pre_rules:
+#     logging.debug(each)
+
+# Infrastructure-as-Code (IaC) - delete all existing rules for candidate config
 for each in pre_rules:
-    logging.debug(each)
+    each.delete()
+
 
 # create pre_rulebase object, attach to device group, refresh rules
 post_rulebase = PostRulebase()
@@ -67,39 +72,86 @@ post_rules = SecurityRule.refreshall(post_rulebase)
 logging.info("Successfully pulled existing PostRules from DataCenter device group")
 
 # debug will print out each of the rules to the console
+# for each in post_rules:
+#     logging.debug(each)
+
+# Infrastructure-as-Code (IaC) - delete all existing rules for candidate config
 for each in post_rules:
-    logging.debug(each)
+    each.delete()
 
 # ----------------------------------------------------------------------------
-# create a new rule, attach to pre_rulebase, commit to Panorama
+# create new rules, attach to pre_rulebase, commit to Panorama
 # ----------------------------------------------------------------------------
-new_rule = SecurityRule(
-    name="Allow-HTTP",
-    fromzone=["LAN"],
-    source=["any"],
-    tozone=["WAN_MPLS"],
-    destination=["any"],
-    application=["web-browsing"],
-    service=["application-default"],
-    action="allow",
-    log_end=True,
-    log_setting="Cortex CDL",
-    description="Allow HTTP traffic from LAN to WAN",
-)
+for each in settings.datacenter.security_rules.pre_rules:
+    # create new rules based on list of rules in settings.toml
+    new_rule = SecurityRule(
+        name=each.name,
+        fromzone=each.from_zone,
+        tozone=each.to_zone,
+        source=each.source,
+        destination=each.destination,
+        application=each.application,
+        service=each.service,
+        category=each.category,
+        action=each.action,
+        log_start=each.log_start,
+        log_end=each.log_end,
+        log_setting=each.log_setting,
+        description=each.description,
+        tag=each.tag,
+    )
 
-# add new rule to pre_rulebase
-pre_rulebase.add(new_rule)
+    # add new rule to pre_rulebase
+    pre_rulebase.add(new_rule)
 
-# push new rule to Panorama
-new_rule.create()
+    # push new rule to Panorama
+    new_rule.create()
+
+# ----------------------------------------------------------------------------
+# create new rules, attach to post_rulebase, commit to Panorama
+# ----------------------------------------------------------------------------
+for each in settings.datacenter.security_rules.post_rules:
+    # create new rules based on list of rules in settings.toml
+    new_rule = SecurityRule(
+        name=each.name,
+        fromzone=each.from_zone,
+        tozone=each.to_zone,
+        source=each.source,
+        destination=each.destination,
+        application=each.application,
+        service=each.service,
+        category=each.category,
+        action=each.action,
+        log_start=each.log_start,
+        log_end=each.log_end,
+        log_setting=each.log_setting,
+        description=each.description,
+        tag=each.tag,
+    )
+
+    # add new rule to pre_rulebase
+    post_rulebase.add(new_rule)
+
+    # push new rule to Panorama
+    new_rule.create()
+
+# ----------------------------------------------------------------------------
+# Make sure there is a default Deny Any at the bottom of the post rulebase
+# ----------------------------------------------------------------------------
+# find the "Deny Any" rule
+deny_all = SecurityRule.find(post_rulebase, name="Deny Any")
+deny_all.refresh()
+
+# move rule to the bottom of the post rulebase
+deny_all.move(location="bottom")
 
 # ----------------------------------------------------------------------------
 # Begin committing our changes to Panorama and remote device groups
 # ----------------------------------------------------------------------------
 # commit changes to Panorama
-pan.commit(sync=True)
-logging.info("Successfully committed new rule to Panorama")
+# pan.commit(sync=True)
+# logging.info("Successfully committed new rule to Panorama")
 
 # Push the configuration to the remote firewall device groups
-pan.commit_all(sync=True, devicegroup=device_group.name)
-logging.info("Configuration pushed to device group: %s", device_group.name)
+# pan.commit_all(sync=True, devicegroup=device_group.name)
+# logging.info("Configuration pushed to device group: %s", device_group.name)

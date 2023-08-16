@@ -4,64 +4,26 @@ api_key = "your api key should be in .secrets.toml file and excluded from git"
 base_url = "192.168.255.210"
 
 [shared]
-dns1 = "94.140.14.14"
-dns2 = "94.140.14.14"
-ntp1 = "0.north-america.pool.ntp.org"
-ntp2 = "1.north-america.pool.ntp.org"
-domain = "redtail.com"
+
+[shared.security_rules]
+pre_rules = []
+post_rules = []
 
 [datacenter]
-lan = "10.1.1.1/24"
-iot = "10.1.2.1/24"
-dmz = "172.16.0.1/24"
-vpn = "192.168.0.1/24"
-wan = "74.51.192.2/30"
-infra = "192.168.255.1/24"
-lo1 = "10.255.255.1/32"
-rid = "10.255.255.1"
 
-[datacenter.fw1]
-serial = "007054000000000"
-
-[austin]
-lan = "10.2.1.1/24"
-wlan = "10.2.2.1/24"
-iot = "10.2.3.1/24"
-wan = "74.51.192.8/30"
-lo1 = "10.255.255.2/32"
-rid = "10.255.255.2"
-
-[austin.fw1]
-serial = "007054000000001"
-
-[dallas]
-lan = "10.3.1.1/24"
-wlan = "10.3.2.1/24"
-iot = "10.3.3.1/24"
-wan = "74.51.192.6/30"
-lo1 = "10.255.255.3/32"
-rid = "10.255.255.3"
-
-[dallas.fw1]
-serial = "007054000000002"
-
-[houston]
-lan = "10.4.1.1/24"
-wlan = "10.4.2.1/24"
-iot = "10.4.3.1/24"
-wan = "74.51.192.4/30"
-lo1 = "10.255.255.4/32"
-rid = "10.255.255.4"
-ha_group = "1"
-ha1_port = "management"
-ha2_port = "ethernet1/2"
-
-[houston.fw1]
-serial = "007054000000003"
-ha1_peer = "192.168.255.212"
-ha2_ip = "172.20.12.1/24"
-
-[houston.fw2]
-serial = "007054000000004"
-ha1_peer = "192.168.255.211"
-ha2_ip = "172.20.12.2/24"
+[datacenter.security_rules]
+pre_rules = [
+  { name = "AAP to any", from_zone = ["DMZ"], to_zone = ["any"], source = ["AAP"], destination = ["any"], application = ["any"], service = ["application-default"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Permit AAP to access anythying on the network", tag = ["Automation", "Host"] },
+  { name = "VPN clients to Corporate", from_zone = ["VPN"], to_zone = ["DMZ", "LAN"], source = ["VPN Clients"], destination = ["any"], application = ["any"], service = ["application-default"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Permit VPN clients to access corporate network", tag = ["GlobalProtect", "Network"] },
+  { name = "Monitor WAN to GlobalProtect", from_zone = ["WAN_ATT"], to_zone = ["WAN_ATT"], source = ["any"], destination = ["any"], application = ["panos-global-protect", "ssl", "web-browsing"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Monitor GlobalProtect requests", tag = ["GlobalProtect", "Monitoring", "Network"] },
+  { name = "Monitor Firewall to RADIUS", from_zone = ["DMZ"], to_zone = ["DMZ"], source = ["any"], destination = ["Radius Server"], application = ["radius"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Monitor local firewall requests to RADIUS", tag = ["GlobalProtect", "Monitoring", "Host"] },
+  { name = "LAN to any", from_zone = ["LAN"], to_zone = ["any"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Allow the LAN network to anywhere", tag = ["Network"] },
+  { name = "DMZ to DMZ", from_zone = ["DMZ"], to_zone = ["DMZ"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Allow the DMZ network to DMZ network", tag = ["Network"] },
+  { name = "DMZ to WAN", from_zone = ["DMZ"], to_zone = ["WAN_ATT", "WAN_MPLS", "WAN_Verizon"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Allow the DMZ network to WAN networks", tag = ["Network"] },
+  { name = "IoT to WAN", from_zone = ["IoT"], to_zone = ["WAN_ATT", "WAN_MPLS", "WAN_Verizon"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Allow the IoT network to WAN networks", tag = ["Network"] },
+  { name = "MPLS to WAN", from_zone = ["WAN_MPLS"], to_zone = ["WAN_ATT", "WAN_MPLS", "WAN_Verizon"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Allow the MPLS network to WAN networks", tag = ["Network"] },
+]
+post_rules = [
+  { name = "Deny Any", from_zone = ["any"], to_zone = ["any"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "deny", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Default, catch all deny statement", tag = ["Network"] },
+  { name = "Monitor Tap", from_zone = ["Tap"], to_zone = ["Tap"], source = ["any"], destination = ["any"], application = ["any"], service = ["any"], category = ["any"], action = "allow", log_setting = "Cortex CDL", log_start = false, log_end = true, description = "Monitor the tapped interface", tag = ["Network", "Monitoring"] },
+]

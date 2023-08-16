@@ -97,9 +97,9 @@ new_rule.create()
 # Begin committing our changes to Panorama and remote device groups
 # ----------------------------------------------------------------------------
 # commit changes to Panorama
-pan.commit(sync=True)
-logging.info("Successfully committed new rule to Panorama")
+# pan.commit(sync=True)
+# logging.info("Successfully committed new rule to Panorama")
 
 # Push the configuration to the remote firewall device groups
-pan.commit_all(sync=True, devicegroup=device_group.name)
-logging.info("Configuration pushed to device group: %s", device_group.name)
+# pan.commit_all(sync=True, devicegroup=device_group.name)
+# logging.info("Configuration pushed to device group: %s", device_group.name)
