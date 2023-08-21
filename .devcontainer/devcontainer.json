@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/python-3
 {
-  "name": "Python 3",
+  "name": "PAN-OS Automation",
   "build": {
     "dockerfile": "Dockerfile",
     "context": "..",
@@ -22,13 +22,8 @@
       // Set *default* container specific settings.json values on container create.
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "python.analysis.extraPaths": [
-            "/workspace/"
-        ],
-        "editor.rulers": [
-            80,
-            120
-        ],
+        "python.analysis.extraPaths": ["/workspace/"],
+        "editor.rulers": [80, 120],
         "editor.formatOnPaste": true,
         "files.autoSave": "onFocusChange",
         "files.trimTrailingWhitespace": true,
@@ -39,23 +34,23 @@
         "python.linting.pylintEnabled": true,
         "python.linting.pycodestyleEnabled": false,
         "python.linting.pycodestyleArgs": [
-            "--max-line-length=120",
-            "--ignore=E501,722"
+          "--max-line-length=120",
+          "--ignore=E501,722"
         ],
         "python.linting.flake8Enabled": true,
         "python.linting.flake8Args": [
-            "--max-line-length=120",
-            "--ignore=E722,E501",
-            "--verbose",
-            "--exclude=*.pyc *.git",
-            "--format=pylint"
+          "--max-line-length=120",
+          "--ignore=E722,E501",
+          "--verbose",
+          "--exclude=*.pyc *.git",
+          "--format=pylint"
         ],
         "python.linting.pylintArgs": [
-            "--max-line-length=120",
-            "--disable=E501,W0142,W0403,W0613,W0232,R0903,R0913,C0103,R0914,C0304,F0401,W0402,E1101,W0614,C0111,C0301"
+          "--max-line-length=120",
+          "--disable=E501,W0142,W0403,W0613,W0232,R0903,R0913,C0103,R0914,C0304,F0401,W0402,E1101,W0614,C0111,C0301"
         ],
         "telemetry.enableCrashReporter": false,
-        "telemetry.enableTelemetry": false,
+        "telemetry.enableTelemetry": false
       },
 
       // Add the IDs of extensions you want installed when the container is created.
@@ -84,8 +79,17 @@
         "yzhang.markdown-all-in-one",
         "coenraads.bracket-pair-colorizer-2",
         "github.vscode-pull-request-github",
-        "ms-python.vscode-pylance"
-
+        "ms-python.vscode-pylance",
+        "amatiasq.sort-imports",
+        "DSKWRK.vscode-generate-getter-setter",
+        "esbenp.prettier-vscode",
+        "johnpapa.vscode-peacock",
+        "expertly-simple.ng-evergreen",
+        "WallabyJs.quokka-vscode",
+        "formulahendry.auto-close-tag",
+        "johnpapa.angular-essentials",
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker"
       ]
     }
   },

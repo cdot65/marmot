@@ -18,6 +18,7 @@ dynaconf = "^3.2.1"
 flake8 = "^6.0.0"
 black = "^23.3.0"
 distro = "^1.8.0"
+ipython = "^8.14.0"
 
 [build-system]
 requires = ["poetry-core"]
