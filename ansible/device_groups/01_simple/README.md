@@ -1,8 +1,8 @@
-# Security Policy Configuration Example
+# Custom Filter Plugin to return device group
 
 ![Palo Alto Networks](../../../docs/images/paloaltonetworks_logo.png)
 
-This playbook automates the configuration of security policies. The configuration is pushed to the firewalls and loaded into the candidate configuration.
+This playbook will return the value of a firewall's device group based on a lookup of the serial number
 
 ## Installation
 
@@ -16,8 +16,9 @@ Example:
 
 ```yaml
 ---
-panorama_api_token: "example_apitoken"
-panorama_username: "example_username"
+panorama:
+  username: "my username"
+  password: "super secret password"
 ```
 
 ## Working with Ansible Vault
@@ -74,14 +75,12 @@ all:
 To run the playbook, execute the following command:
 
 ```bash
-ansible-playbook playbook.yaml
+ansible-playbook playbook.yaml --ask-vault-pass
 ```
 
 ## How the Playbook Works
 
-The playbook imports tasks from the roles directory and applies them sequentially:
-
-1. **panos_security_rule** - Creates security rules on the firewalls.
+The playbook uses the `panos_op`module to retrieve all device group information into a local dictionary, we then run this output through a filter plugin to identify the DeviceGroup that a firewall belongs to.
 
 ## Contributing
 
