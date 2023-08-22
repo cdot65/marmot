@@ -16,9 +16,9 @@ Example:
 
 ```yaml
 ---
-panorama:
-  username: "my username"
-  password: "super secret password"
+panorama_credentials:
+  username: "automation"
+  password: "supersecretpassword"
 ```
 
 ## Working with Ansible Vault

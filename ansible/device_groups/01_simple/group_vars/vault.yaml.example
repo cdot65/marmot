@@ -1,4 +1,3 @@
-# group_vars/panorama.yaml
 # Variables related to all Panorama API connections
 panorama_credentials:
   username: "automation"
