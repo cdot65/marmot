@@ -14,7 +14,6 @@
       "NODE_VERSION": "lts/*"
     }
   },
-
   // Configure tool-specific properties.
   "customizations": {
     // Configure properties specific to VS Code.
@@ -22,8 +21,13 @@
       // Set *default* container specific settings.json values on container create.
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "python.analysis.extraPaths": ["/workspace/"],
-        "editor.rulers": [80, 120],
+        "python.analysis.extraPaths": [
+          "/workspace/"
+        ],
+        "editor.rulers": [
+          80,
+          120
+        ],
         "editor.formatOnPaste": true,
         "files.autoSave": "onFocusChange",
         "files.trimTrailingWhitespace": true,
@@ -52,7 +56,6 @@
         "telemetry.enableCrashReporter": false,
         "telemetry.enableTelemetry": false
       },
-
       // Add the IDs of extensions you want installed when the container is created.
       "extensions": [
         "christian-kohler.path-intellisense",
@@ -77,7 +80,6 @@
         "tuxtina.json2yaml",
         "wholroyd.jinja",
         "yzhang.markdown-all-in-one",
-        "coenraads.bracket-pair-colorizer-2",
         "github.vscode-pull-request-github",
         "ms-python.vscode-pylance",
         "amatiasq.sort-imports",
@@ -89,22 +91,22 @@
         "formulahendry.auto-close-tag",
         "johnpapa.angular-essentials",
         "ms-vscode-remote.remote-containers",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "DotJoshJohnson.xml",
+        "redhat.vscode-xml",
+        "tamasfe.even-better-toml",
+        "ms-python.black-formatter"
       ]
     }
   },
-
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
-
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "pip3 install --user -r requirements.txt",
-
   // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode",
   "features": {
     "terraform": "latest",
-    "github-cli": "latest",
-    "golang": "latest"
+    "github-cli": "latest"
   }
 }

@@ -1,7 +1,9 @@
 {
   "debug.openExplorerOnEnd": true,
   "editor.tabSize": 2,
-  "editor.rulers": [90],
+  "editor.rulers": [
+    90
+  ],
   "editor.autoIndent": "full",
   "editor.cursorBlinking": "solid",
   "editor.formatOnType": false,
@@ -30,7 +32,9 @@
     "editorGroup": false
   },
   "ng-evergreen.upgradeChannel": "Latest",
-  "cSpell.words": ["chatgpt"],
+  "cSpell.words": [
+    "chatgpt"
+  ],
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -45,5 +49,14 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "DotJoshJohnson.xml"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
   }
 }

@@ -11,6 +11,10 @@
     "expertly-simple.ng-evergreen",
     "formulahendry.auto-close-tag",
     "johnpapa.angular-essentials",
-    "msjsdiag.debugger-for-edge"
+    "msjsdiag.debugger-for-edge",
+    "DotJoshJohnson.xml",
+    "redhat.vscode-xml",
+    "tamasfe.even-better-toml",
+    "ms-python.black-formatter"
   ]
 }
