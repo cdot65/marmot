@@ -12,8 +12,8 @@ def create_toml():
     fake = Faker()
 
     # Create unique usernames and IP addresses
-    usernames = [f'redtail\\{fake.first_name().lower()}{i}' for i in range(1, 1001)]
-    ips = [f'192.168.{i//256}.{i%256}' for i in range(1, 1001)]
+    usernames = [f"redtail\\{fake.first_name().lower()}{i}" for i in range(1, 1001)]
+    ips = [f"192.168.{i//256}.{i%256}" for i in range(1, 1001)]
 
     # Creating logins list with usernames and IP addresses
     logins = []
@@ -24,7 +24,7 @@ def create_toml():
     users = {"users": {"logins": logins}}
 
     # Write to TOML file
-    with open('settings.toml', 'w') as file:
+    with open("settings.toml", "w") as file:
         toml.dump(users, file)
 
 
