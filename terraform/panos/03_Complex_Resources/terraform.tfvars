@@ -1,6 +1,6 @@
-hostname     = "192.168.255.1"
-pan_username = "automation"
-pan_password = "mysecretpasswordwashere!"
+hostname     = "192.168.255.215"
+pan_username = "terraform"
+pan_password = "paloalto#1"
 
 address_objects = {
   aus_ads_01 = {

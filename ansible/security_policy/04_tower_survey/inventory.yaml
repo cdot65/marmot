@@ -1,5 +1,0 @@
-all:
-  children:
-    panorama:
-      hosts:
-        panorama:
