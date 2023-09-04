@@ -11,11 +11,6 @@ firewall = FirewallProxy(
 checks = CheckFirewall(firewall)
 
 checks_configuration = [
-    {'session_exist': {
-        'source': '10.1.1.12',
-        'destination': '10.0.0.1',
-        'dest_port': '8080'
-    }},
     {'arp_entry_exist': {
         'ip': '10.1.1.12'
     }},
