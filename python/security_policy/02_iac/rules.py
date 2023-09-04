@@ -153,5 +153,5 @@ deny_all.move(location="bottom")
 # logging.info("Successfully committed new rule to Panorama")
 
 # Push the configuration to the remote firewall device groups
-# pan.commit_all(sync=True, devicegroup=device_group.name)
-# logging.info("Configuration pushed to device group: %s", device_group.name)
+pan.commit_all(sync=True, devicegroup=device_group.name)
+logging.info("Configuration pushed to device group: %s", device_group.name)
