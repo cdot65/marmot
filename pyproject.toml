@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "marmot"
 version = "0.0.1"
-description = "GitHub repository for Ansible workshop examples"
+description = "GitHub repository for automation workshop examples"
 authors = ["Calvin Remsburg <cremsburg.dev@gmail.com>"]
 license = "Apache 2.0"
 readme = "README.md"

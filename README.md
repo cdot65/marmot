@@ -8,14 +8,14 @@ This repository is mostly geared towards hands-on workshops where we teach the t
 
 ## Table of Contents
 
-- [🚀 Marmot](#marmot)
-  - [📚 Table of Contents](#table-of-contents)
-  - [🛠️ Setting Up Your Environment](#️setting-up-your-environment)
+- [Marmot](#marmot)
+  - [Table of Contents](#table-of-contents)
+  - [Setting Up Your Environment](#setting-up-your-environment)
     - [Using VScode Dev Containers](#using-vscode-dev-containers)
     - [Creating Python Virtual Environments](#creating-python-virtual-environments)
-  - [📖 Where to Find Documentation](#where-to-find-documentation)
-  - [🤝 Contributing](#contributing)
-  - [✍️ Author](#️author)
+  - [Where to Find Documentation](#where-to-find-documentation)
+  - [Contributing](#contributing)
+  - [Author](#author)
 
 ## Setting Up Your Environment
 
