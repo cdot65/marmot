@@ -58,5 +58,8 @@
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
   }
 }
