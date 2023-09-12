@@ -83,7 +83,7 @@ for each in post_rules:
 # create new rules, attach to pre_rulebase, commit to Panorama
 # ----------------------------------------------------------------------------
 for each in settings.datacenter.security_rules.pre_rules:
-    # create new rules based on list of rules in settings.toml
+    # create new rules based on list of rules in settings.yaml
     new_rule = SecurityRule(
         name=each.name,
         fromzone=each.from_zone,
@@ -111,7 +111,7 @@ for each in settings.datacenter.security_rules.pre_rules:
 # create new rules, attach to post_rulebase, commit to Panorama
 # ----------------------------------------------------------------------------
 for each in settings.datacenter.security_rules.post_rules:
-    # create new rules based on list of rules in settings.toml
+    # create new rules based on list of rules in settings.yaml
     new_rule = SecurityRule(
         name=each.name,
         fromzone=each.from_zone,

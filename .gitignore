@@ -161,7 +161,11 @@ cython_debug/
 
 
 # Ignore dynaconf secret files
-.secrets.toml
+.secrets.yaml
+.secrets.yaml
+.secrets.json
+.env
+.env.*
 
 # Local .terraform directories
 **/.terraform/*
