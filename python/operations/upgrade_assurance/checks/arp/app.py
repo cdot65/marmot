@@ -12,7 +12,7 @@ checks = CheckFirewall(firewall)
 
 checks_configuration = [
     {'arp_entry_exist': {
-        'ip': '10.1.1.12'
+        'ip': '10.1.1.121'
     }},
 ]
 
