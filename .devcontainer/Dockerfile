@@ -13,6 +13,9 @@ COPY requirements.txt /tmp/pip-tmp/
 RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \
   && rm -rf /tmp/pip-tmp
 
+# [Optional] Install Ansible galaxy collection.
+RUN ansible-galaxy collection install -p /usr/local/lib/python3.10/site-packages/ansible_collections paloaltonetworks.panos
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
