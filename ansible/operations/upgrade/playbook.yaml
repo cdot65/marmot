@@ -1,0 +1,18 @@
+- name: Upgrade a firewall
+  hosts: panorama
+  connection: local
+  gather_facts: false
+  become: false
+
+  tasks:
+    - name: Install Software
+      paloaltonetworks.panos.panos_software:
+        provider:
+          ip_address: "{{ ansible_host }}"
+          username: "{{ panorama_credentials.username }}"
+          password: "{{ panorama_credentials.password }}"
+          serial_number: "007054000242053"
+        version: "11.0.2-h1"
+        download: true
+        install: true
+        restart: true
