@@ -57,7 +57,7 @@
     "editor.defaultFormatter": "DotJoshJohnson.xml"
   },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.python"
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform"
