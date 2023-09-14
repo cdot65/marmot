@@ -16,6 +16,10 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requ
 # [Optional] Install Ansible galaxy collection.
 RUN ansible-galaxy collection install -p /usr/local/lib/python3.10/site-packages/ansible_collections paloaltonetworks.panos
 
+# [Optional] Set up custom path for iPython history database.
+# RUN ipython profile create vscode
+# COPY python/ipython_config.py /home/vscode/.ipython/profile_default/ipython_config.py
+
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends <your-package-list-here>
