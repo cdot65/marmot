@@ -1,0 +1,4 @@
+api_key: "your api key should be in .secrets.yaml file and excluded from git"
+
+panorama:
+  base_url: "192.168.255.210"
